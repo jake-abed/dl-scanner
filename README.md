@@ -1,5 +1,14 @@
 # Driver's License Scanner
 
+This web app allows a user to quickly scan the barcode on the back of their US driver's license and extract data from it. This can be tricky if the user webcam/camera is low enough quality. After enough failed attempts, the application will prompt the user to simply enter their information manually or upload a photo from a better device.
+
+## To-Do
+- Flesh out components.
+- Style app.
+- Polish UI/UX
+- Build out tests.
+
+
 ## Technologies
 
 ![React](https://img.shields.io/badge/frontend-react-61DBFB?style=flat&logo=react)

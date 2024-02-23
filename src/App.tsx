@@ -1,20 +1,14 @@
 import { useState } from 'react';
-import styles from './App.module.css';
+import Camera from './components/Camera';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [pic, setPic] = useState<string | undefined | null>(null);
 
   return (
-    <div className={styles['App']}>
-      <h1 className={styles['app-heading']}>Vite + React + TS + Tailwind</h1>
-      <div>
-        <button className={styles['button']} onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+    <div className="mx-auto flex flex-col justify-center align-center w-11/12 lg:w-7/12">
+      <h1 className="text-4xl text-center font-extrabold ">Driver's License Scanner</h1>
+      <Camera setPic={setPic} />
+      {pic ? <img src={pic || ''} alt="pic" /> : <></>}
     </div>
   );
 }
