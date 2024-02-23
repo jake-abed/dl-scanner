@@ -3,11 +3,11 @@
 This web app allows a user to quickly scan the barcode on the back of their US driver's license and extract data from it. This can be tricky if the user webcam/camera is low enough quality. After enough failed attempts, the application will prompt the user to simply enter their information manually or upload a photo from a better device.
 
 ## To-Do
+
 - Flesh out components.
 - Style app.
 - Polish UI/UX
 - Build out tests.
-
 
 ## Technologies
 
@@ -27,19 +27,6 @@ This web app allows a user to quickly scan the barcode on the back of their US d
 - [Vitest](https://vitest.dev/) for unit testing and code coverage
 - [Vite](https://vitejs.dev/) to build the project for development or production
 - [Husky 🐶](https://typicode.github.io/husky/) runs the full list of specs before committing your changes to ensure that you have a green build
-
-### Tailwind + CSS Modules
-
-1. Create a CSS Module file by following the naming convention - `<Component>.module.css`
-2. Use the `@apply` directive in your CSS class definitions to use Tailwind's utility classes into your own custom CSS
-
-   ```css
-   .app-heading {
-     @apply text-5xl font-semibold mb-4;
-   }
-   ```
-
-3. Import the CSS Module file into the React component file
 
 ### Dev Loop
 
