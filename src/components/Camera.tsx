@@ -11,7 +11,7 @@ function Camera({ setPic }: { setPic: (pic: string | undefined | null) => void }
 
   return (
     <>
-      <div className="flex px-2 md:px-8">
+      <div className="flex p-2 md:p-8">
         <Webcam
           className="mx-auto"
           audio={false}

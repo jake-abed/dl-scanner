@@ -4,4 +4,12 @@ interface Status {
   failure: boolean;
 }
 
-export type { Status };
+interface LicenseResults {
+  fullName?: string;
+  address?: string;
+  issuanceDate?: string;
+  expirationDate?: string;
+  scanFailed: boolean;
+}
+
+export type { Status, LicenseResults };
