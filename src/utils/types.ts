@@ -1,3 +1,5 @@
+import { WebcamProps } from 'react-webcam';
+
 interface Status {
   attempts: number;
   success: boolean;
@@ -12,4 +14,9 @@ interface LicenseResults {
   scanFailed: boolean;
 }
 
-export type { Status, LicenseResults };
+interface CameraProps {
+  status: Status;
+  setStatus: (status: Status) => void;
+}
+
+export type { Status, LicenseResults, CameraProps };

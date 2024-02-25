@@ -17,7 +17,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@zxing/browser": "github:zxing-js/browser",
+    "@zxing/browser": "^0.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-webcam": "^7.2.0"
