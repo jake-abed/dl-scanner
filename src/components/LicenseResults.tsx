@@ -74,6 +74,7 @@ export default function LicenseResults(props: ScanResults) {
         </div>
         <input type="submit" value="Submit"></input>
       </form>
+      <p>{JSON.stringify(props)}</p>
     </>
   );
 }
