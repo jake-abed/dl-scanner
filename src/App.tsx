@@ -18,7 +18,6 @@ function App() {
       )}
       {scanStatus.failure && (
         <>
-          <h2 className="text-xl text-center font-bold">Enter Your Driver's License Info</h2>
           <LicenseResults scanFailed={true} />
         </>
       )}

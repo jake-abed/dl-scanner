@@ -37,11 +37,9 @@ function Camera(props: CameraProps) {
       setScanStatus({ ...scanStatus, attempts: newAttempts });
       return;
     }
-    if (decoded.result) {
-      const scanResults = decoded.result as ScanResults;
-      setScanStatus({ ...scanStatus, attempts: newAttempts, success: true, scanResults: scanResults });
-      return;
-    }
+    const scanResults = decoded.result as ScanResults;
+    setScanStatus({ ...scanStatus, attempts: newAttempts, success: true, scanResults: scanResults });
+    return;
   };
 
   return (
