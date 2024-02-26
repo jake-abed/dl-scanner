@@ -4,7 +4,7 @@ interface ScanStatus {
   attempts: number;
   success: boolean;
   failure: boolean;
-  scanResults?: ScanResults;
+  scanResults?: ScanResults | string;
 }
 
 interface ScanResults {
