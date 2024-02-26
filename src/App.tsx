@@ -26,7 +26,7 @@ function App() {
           <LicenseResults {...scanStatus.scanResults} scanFailed={false} />
         </>
       )}
-      <p>{scanStatus.success}</p>
+      <p>{JSON.stringify(scanStatus?.scanResults)}</p>
     </>
   );
 }
