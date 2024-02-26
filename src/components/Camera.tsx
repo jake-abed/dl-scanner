@@ -1,5 +1,5 @@
 import Webcam from 'react-webcam';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { CameraProps, ScanResults } from '../utils/types';
 import { decodeBarcode } from '../utils/barcodes';
 

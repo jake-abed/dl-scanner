@@ -1,7 +1,9 @@
 import { BrowserPDF417Reader } from '@zxing/browser';
 
+/* Test DL # - Don't Dox Me Please
 const testResult =
   '@\n\u001e\rANSI 636014090102DL00410287ZC03280024DLDAQE3002456\nDCSABED\nDDEN\nDACTHOMAS\nDDFN\nDADJAKE\nDDGN\nDCAC\nDCBNONE\nDCDNONE\nDBD04252022\nDBB10201990\nDBA10202026\nDBC1\nDAU073 IN\nDAYHAZ\nDAG5310 SAN FRANCISCO BLVD\nDAISACRAMENTO\nDAJCA\nDAK958200000 \nDCF04/25/202250148/CCFD/26\nDCGUSA\nDAW195\nDAZBRO\nDCK22115E30024560401\nDDAF\nDDB08292017\nDDK1\rZCZCAHZL\nZCBBRN\nZCC\nZCD\r';
+*/
 
 function parseLine(line: string) {
   if (line.includes('ANSI')) {
@@ -37,7 +39,6 @@ async function decodeBarcode(img: HTMLImageElement) {
   const hints = new Map();
   hints.set('TRY_HARDER', 'true');
   const reader = new BrowserPDF417Reader(hints);
-  let result: string | null = null;
   try {
     const res = await reader.decodeFromImageElement(img);
     return { result: parseResult(res.getText()) };
@@ -47,7 +48,6 @@ async function decodeBarcode(img: HTMLImageElement) {
     }
     return { result: 'unknown error' };
   }
-  return { result: result };
 }
 
 export { decodeBarcode };

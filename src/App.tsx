@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Camera from './components/Camera';
 import LicenseResults from './components/LicenseResults';
 import { ScanStatus } from './utils/types';
@@ -26,7 +26,6 @@ function App() {
           <LicenseResults {...scanStatus.scanResults} scanFailed={false} />
         </>
       )}
-      <p>{JSON.stringify(scanStatus?.scanResults)}</p>
     </>
   );
 }

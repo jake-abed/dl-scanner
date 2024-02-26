@@ -1,5 +1,3 @@
-import { WebcamProps } from 'react-webcam';
-
 interface ScanStatus {
   attempts: number;
   success: boolean;
