@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import Camera from './components/Camera';
+import LicenseResults from './components/LicenseResults';
 import { Status } from './utils/types';
 import { decodeBarcode } from './utils/barcodes';
 import { decode } from 'punycode';
@@ -21,9 +22,13 @@ function App() {
       ) : (
         <></>
       )}
-      <button onClick={toggleSuccess} className="bg-green-100 text-3xl">
-        TOGGLE SUCCESS
-      </button>
+      {status.success || status.failure ? (
+        <>
+          <LicenseResults scanFailed={status.failure} />
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

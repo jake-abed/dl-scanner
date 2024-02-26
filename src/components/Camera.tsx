@@ -26,8 +26,12 @@ function Camera(props: CameraProps) {
     if (decoded.error && newAttempts === 3) {
       setStatus({ ...status, attempts: newAttempts });
       alert(
-        "Hey, looks like you're having a hard time scanning your barcode. If you're on a desktop, you may wish to try using a mobile phone instead. Please try two more times and if you're still having trouble, we'll let you manually enter your information.",
+        "Hey, looks like you're having a hard time scanning your barcode. If you're on a desktop, you may wish to try using a mobile phone instead. \n\nPlease try two more times and if you're still having trouble, we'll let you manually enter your information.",
       );
+      return;
+    }
+    if (decoded.error && newAttempts === 5) {
+      setStatus({ ...status, attempts: newAttempts, failure: true });
       return;
     }
     if (decoded.error) {

@@ -6,7 +6,7 @@ interface Status {
   failure: boolean;
 }
 
-interface LicenseResults {
+interface ScanResults {
   fullName?: string;
   address?: string;
   issuanceDate?: string;
@@ -19,4 +19,4 @@ interface CameraProps {
   setStatus: (status: Status) => void;
 }
 
-export type { Status, LicenseResults, CameraProps };
+export type { Status, ScanResults, CameraProps };
