@@ -8,14 +8,10 @@ function Camera(props: CameraProps) {
   const { status, setStatus } = props;
   const camRef = useRef<Webcam>(null);
 
-  console.log(status.attempts);
-
   const videoConstraints = {
-    width: 2000,
-    height: 600,
     aspectRatio: 10 / 3,
-    facingMode: 'environment',
     resizeMode: 'crop-and-scale',
+    facingMode: 'environment',
   };
 
   const attemptScan = async () => {
@@ -52,7 +48,7 @@ function Camera(props: CameraProps) {
         <Webcam
           className="mx-auto"
           audio={false}
-          screenshotFormat="image/jpeg"
+          screenshotFormat="image/png"
           screenshotQuality={1}
           videoConstraints={videoConstraints}
           ref={camRef}
