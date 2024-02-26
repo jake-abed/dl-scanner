@@ -50,7 +50,7 @@ function Camera(props: CameraProps) {
         <Webcam
           className="mx-auto"
           audio={false}
-          screenshotFormat="image/png"
+          screenshotFormat="image/jpeg"
           minScreenshotHeight={400}
           minScreenshotWidth={1800}
           screenshotQuality={1}
