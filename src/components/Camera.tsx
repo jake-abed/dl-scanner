@@ -25,6 +25,7 @@ function Camera(props: CameraProps) {
     const img = new Image();
     img.src = shot as string;
     const decoded = await decodeBarcode(img);
+    alert(decoded);
     if (decoded.error && newAttempts === 3) {
       setScanStatus({ ...scanStatus, attempts: newAttempts });
       return;
