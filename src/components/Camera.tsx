@@ -11,8 +11,9 @@ function Camera(props: CameraProps) {
   console.log(status.attempts);
 
   const videoConstraints = {
-    width: 1800,
-    height: 400,
+    width: 2000,
+    height: 600,
+    aspectRatio: 10 / 3,
     facingMode: 'environment',
     resizeMode: 'crop-and-scale',
   };
@@ -52,8 +53,6 @@ function Camera(props: CameraProps) {
           className="mx-auto"
           audio={false}
           screenshotFormat="image/jpeg"
-          minScreenshotHeight={400}
-          minScreenshotWidth={1800}
           screenshotQuality={1}
           videoConstraints={videoConstraints}
           ref={camRef}
