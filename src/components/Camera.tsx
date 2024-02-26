@@ -25,7 +25,6 @@ function Camera(props: CameraProps) {
     const img = new Image();
     img.src = shot as string;
     const decoded = await decodeBarcode(img);
-    alert(JSON.stringify(decoded));
     if (decoded.error && newAttempts === 3) {
       setScanStatus({ ...scanStatus, attempts: newAttempts });
       return;
@@ -59,14 +58,14 @@ function Camera(props: CameraProps) {
         Take Pic
       </button>
       {(scanStatus.attempts === 3 || scanStatus.attempts === 4) && (
-        <p className="text-lg py-2">
+        <div className="text-lg py-2">
           Having a hard time scanning your barcode?
           <ul className="list-disc px-6 py-2 text-md font-normal">
             <li>If you're on a desktop, you may wish to try using a mobile phone instead.</li>
             <li>Make sure you're in a well-lit room.</li>
           </ul>
           After five failed attempts, we'll have you manually enter your information.
-        </p>
+        </div>
       )}
     </div>
   );

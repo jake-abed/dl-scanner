@@ -23,8 +23,8 @@ export default function LicenseResults(props: ScanResults) {
             type="text"
             id="full-name"
             name="fullName"
-            className="rounded border-solid border-2 border-black p-1"
-            value={`${firstName} ${middleName} ${lastName}`}
+            className="rounded border-solid border-2 text-zinc-900 border-black p-1"
+            defaultValue={`${firstName} ${middleName} ${lastName}`}
             disabled={!props.scanFailed}
           ></input>
         </div>
@@ -34,8 +34,8 @@ export default function LicenseResults(props: ScanResults) {
             type="text"
             id="address"
             name="address"
-            className="rounded border-solid border-2 border-black p-1"
-            value={address}
+            className="rounded border-solid border-2 text-zinc-900 border-black p-1"
+            defaultValue={address}
             disabled={!props.scanFailed}
           ></input>
         </div>
@@ -45,8 +45,8 @@ export default function LicenseResults(props: ScanResults) {
             type="text"
             id="license-number"
             name="licenseNumber"
-            className="rounded border-slid border-2 border-black p-1"
-            value={licenseNumber}
+            className="rounded border-slid border-2 text-zinc-900 border-black p-1"
+            defaultValue={licenseNumber}
             disabled={!props.scanFailed}
           ></input>
         </div>
@@ -57,7 +57,7 @@ export default function LicenseResults(props: ScanResults) {
             id="issuanceDate"
             name="issuance-date"
             className="rounded border-solid border-2 border-black p-1"
-            value={issuanceDate}
+            defaultValue={issuanceDate}
             disabled={!props.scanFailed}
           ></input>
         </div>
@@ -68,13 +68,12 @@ export default function LicenseResults(props: ScanResults) {
             id="expiry-date"
             name="expiryDate"
             className="rounded border-solid border-2 border-black p-1"
-            value={expiryDate}
+            defaultValue={expiryDate}
             disabled={!props.scanFailed}
           ></input>
         </div>
-        <input type="submit" value="Submit"></input>
+        <input className="bg-zinc-700 text-white p-4 rounded-xl" type="submit" value="Submit"></input>
       </form>
-      <p>{JSON.stringify(props)}</p>
     </>
   );
 }
