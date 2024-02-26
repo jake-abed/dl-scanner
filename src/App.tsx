@@ -23,6 +23,7 @@ function App() {
       ) : (
         <></>
       )}
+      {scanStatus.scanResults && <p>{JSON.stringify(scanStatus.scanResults)}</p>}
     </>
   );
 }
