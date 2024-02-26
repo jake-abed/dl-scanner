@@ -4,10 +4,8 @@ This web app allows a user to quickly scan the barcode on the back of their US d
 
 ## To-Do
 
-- Flesh out components.
-- Style app.
-- Polish UI/UX
-- Build out tests.
+-   Polish UI/UX
+-   Build out tests.
 
 ## Technologies
 
@@ -19,24 +17,15 @@ This web app allows a user to quickly scan the barcode on the back of their US d
 ![Vitest](https://img.shields.io/badge/specs-vitest-yellow?style=flat&logo=vitest)
 ![Vite](https://img.shields.io/badge/build-vite-A855F7?style=flat&logo=vite)
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [TailwindCSS](https://tailwindcss.com/) for utility CSS classes
-- [ESLint](https://eslint.org/) configured with some initial rules
-- [Prettier](https://prettier.io/) to enforce consistent code style
-- [Vitest](https://vitest.dev/) for unit testing and code coverage
-- [Vite](https://vitejs.dev/) to build the project for development or production
-- [Husky 🐶](https://typicode.github.io/husky/) runs the full list of specs before committing your changes to ensure that you have a green build
-
 ### Dev Loop
 
-- `prettier-format` - run the autoformatter
-- `lint` - run the linter
-- `test` - run the specs
-- `test-filter <spec-name>` - run a specific spec
-- `coverage` - get a coverage report of the specs
-- `build` - build the project files for distribution
-- `dev` - run the local development server
+-   `prettier-format` - run the autoformatter
+-   `lint` - run the linter
+-   `test` - run the specs
+-   `test-filter <spec-name>` - run a specific spec
+-   `coverage` - get a coverage report of the specs
+-   `build` - build the project files for distribution
+-   `dev` - run the local development server
 
 ## License
 

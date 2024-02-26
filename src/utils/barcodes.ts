@@ -6,48 +6,48 @@ const testResult =
 */
 
 function parseLine(line: string) {
-  if (line.includes('ANSI')) {
-    return ['licenseNumber', line.split('DAQ')[1]];
-  }
-  if (line.startsWith('DCS')) {
-    return ['lastName', line.slice(3)];
-  }
-  if (line.startsWith('DAC')) {
-    return ['firstName', line.slice(3)];
-  }
-  if (line.startsWith('DAD')) {
-    return ['middleName', line.slice(3)];
-  }
-  if (line.startsWith('DBD')) {
-    return ['issuanceDate', line.slice(3)];
-  }
-  if (line.startsWith('DBA')) {
-    return ['expiryDate', line.slice(3)];
-  }
-  if (line.startsWith('DAG')) {
-    return ['address', line.slice(3)];
-  } else return '';
+    if (line.includes('ANSI')) {
+        return ['licenseNumber', line.split('DAQ')[1]];
+    }
+    if (line.startsWith('DCS')) {
+        return ['lastName', line.slice(3)];
+    }
+    if (line.startsWith('DAC')) {
+        return ['firstName', line.slice(3)];
+    }
+    if (line.startsWith('DAD')) {
+        return ['middleName', line.slice(3)];
+    }
+    if (line.startsWith('DBD')) {
+        return ['issuanceDate', line.slice(3)];
+    }
+    if (line.startsWith('DBA')) {
+        return ['expiryDate', line.slice(3)];
+    }
+    if (line.startsWith('DAG')) {
+        return ['address', line.slice(3)];
+    } else return '';
 }
 
 function parseResult(result: string) {
-  const lines = result.split('\n');
-  const parsed = lines.map((line) => parseLine(line)).filter((line) => line !== '') as [string, string][];
-  return Object.fromEntries(parsed);
+    const lines = result.split('\n');
+    const parsed = lines.map((line) => parseLine(line)).filter((line) => line !== '') as [string, string][];
+    return Object.fromEntries(parsed);
 }
 
 async function decodeBarcode(img: HTMLImageElement) {
-  const hints = new Map();
-  hints.set('TRY_HARDER', 'true');
-  const reader = new BrowserPDF417Reader(hints);
-  try {
-    const res = await reader.decodeFromImageElement(img);
-    return { result: parseResult(res.getText()) };
-  } catch (e: unknown) {
-    if (e instanceof Error) {
-      return { error: e.name };
+    const hints = new Map();
+    hints.set('TRY_HARDER', 'true');
+    const reader = new BrowserPDF417Reader(hints);
+    try {
+        const res = await reader.decodeFromImageElement(img);
+        return { result: parseResult(res.getText()) };
+    } catch (e: unknown) {
+        if (e instanceof Error) {
+            return { error: e.name };
+        }
+        return { result: 'unknown error' };
     }
-    return { result: 'unknown error' };
-  }
 }
 
 export { decodeBarcode };
