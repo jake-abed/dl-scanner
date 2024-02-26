@@ -1,6 +1,14 @@
 import { ScanResults } from '../utils/types';
 
 export default function LicenseResults(props: ScanResults) {
+  const firstName = props.firstName || '';
+  const middleName = props.middleName || '';
+  const lastName = props.lastName || '';
+  const licenseNumber = props.licenseNumber || '';
+  const address = props.address || '';
+  const issuanceDate = props.issuanceDate || '';
+  const expiryDate = props.expiryDate || '';
+
   return (
     <>
       {props.scanFailed ? (
@@ -16,6 +24,8 @@ export default function LicenseResults(props: ScanResults) {
             id="full-name"
             name="fullName"
             className="rounded border-solid border-2 border-black p-1"
+            value={`${firstName} ${middleName} ${lastName}`}
+            disabled={!props.scanFailed}
           ></input>
         </div>
         <div className="flex gap-4 items-center justify-between">
@@ -25,6 +35,8 @@ export default function LicenseResults(props: ScanResults) {
             id="address"
             name="address"
             className="rounded border-solid border-2 border-black p-1"
+            value={address}
+            disabled={!props.scanFailed}
           ></input>
         </div>
         <div className="flex gap-4 items-center justify-between">
@@ -34,6 +46,8 @@ export default function LicenseResults(props: ScanResults) {
             id="license-number"
             name="licenseNumber"
             className="rounded border-slid border-2 border-black p-1"
+            value={licenseNumber}
+            disabled={!props.scanFailed}
           ></input>
         </div>
         <div className="flex gap-4 items-center justify-between">
@@ -43,6 +57,8 @@ export default function LicenseResults(props: ScanResults) {
             id="issuanceDate"
             name="issuance-date"
             className="rounded border-solid border-2 border-black p-1"
+            value={issuanceDate}
+            disabled={!props.scanFailed}
           ></input>
         </div>
         <div className="flex gap-4 items-center justify-between">
@@ -52,6 +68,8 @@ export default function LicenseResults(props: ScanResults) {
             id="expiry-date"
             name="expiryDate"
             className="rounded border-solid border-2 border-black p-1"
+            value={expiryDate}
+            disabled={!props.scanFailed}
           ></input>
         </div>
         <input type="submit" value="Submit"></input>
