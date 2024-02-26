@@ -7,9 +7,15 @@ function Camera(props: CameraProps) {
   const [pic, setPic] = useState<string | undefined | null>(null);
   const { status, setStatus } = props;
   const camRef = useRef<Webcam>(null);
+  const usingMobile = navigator.platform === 'iPhone' || navigator.platform === 'Android';
+  const aspectRatio = usingMobile ? 3 / 10 : 10 / 3;
+  const width = usingMobile ? 600 : 2000;
+  const height = usingMobile ? 2000 : 600;
 
   const videoConstraints = {
-    aspectRatio: 4 / 3,
+    aspectRatio: aspectRatio,
+    width: width,
+    height: height,
     resizeMode: 'crop-and-scale',
     facingMode: 'environment',
   };
@@ -63,7 +69,6 @@ function Camera(props: CameraProps) {
           Please try two more times and if you're still having trouble, we'll let you manually enter your information.
         </p>
       )}
-      <p>{navigator.platform}</p>
     </>
   );
 }
