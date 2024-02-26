@@ -1,6 +1,6 @@
 import Webcam from 'react-webcam';
 import { useRef, useState } from 'react';
-import { CameraProps } from '../utils/types';
+import { CameraProps, ScanResults } from '../utils/types';
 import { decodeBarcode } from '../utils/barcodes';
 
 function Camera(props: CameraProps) {
@@ -25,7 +25,6 @@ function Camera(props: CameraProps) {
     const img = new Image();
     img.src = shot as string;
     const decoded = await decodeBarcode(img);
-    console.log(decoded);
     if (decoded.error && newAttempts === 3) {
       setScanStatus({ ...scanStatus, attempts: newAttempts });
       return;
@@ -39,7 +38,8 @@ function Camera(props: CameraProps) {
       return;
     }
     if (decoded.result) {
-      setScanStatus({ ...scanStatus, attempts: newAttempts, success: true, scanResults: decoded.result });
+      const scanResults = decoded.result as ScanResults;
+      setScanStatus({ ...scanStatus, attempts: newAttempts, success: true, scanResults: scanResults });
       return;
     }
   };
@@ -69,7 +69,6 @@ function Camera(props: CameraProps) {
           After five failed attempts, we'll have you manually enter your information.
         </p>
       )}
-      {scanStatus.scanResults ? <p>{JSON.stringify(scanStatus.scanResults)}</p> : <></>}
     </div>
   );
 }

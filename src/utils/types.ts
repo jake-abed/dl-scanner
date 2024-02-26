@@ -4,15 +4,18 @@ interface ScanStatus {
   attempts: number;
   success: boolean;
   failure: boolean;
-  scanResults?: ScanResults | string;
+  scanResults?: ScanResults;
 }
 
 interface ScanResults {
-  fullName?: string;
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
+  licenseNumber?: string;
   address?: string;
   issuanceDate?: string;
-  expirationDate?: string;
-  scanFailed: boolean;
+  expiryDate?: string;
+  scanFailed?: boolean;
 }
 
 interface CameraProps {

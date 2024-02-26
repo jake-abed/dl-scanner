@@ -16,12 +16,10 @@ function App() {
       ) : (
         <></>
       )}
-      {scanStatus.success || scanStatus.failure ? (
+      {(scanStatus.success || scanStatus.failure) && scanStatus.scanResults && (
         <>
-          <LicenseResults scanFailed={scanStatus.failure} />
+          <LicenseResults {...scanStatus.scanResults} />
         </>
-      ) : (
-        <></>
       )}
       {scanStatus.scanResults && <p>{JSON.stringify(scanStatus.scanResults)}</p>}
     </>
