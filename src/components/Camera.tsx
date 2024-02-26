@@ -14,6 +14,7 @@ function Camera(props: CameraProps) {
     width: 1800,
     height: 400,
     facingMode: 'environment',
+    resizeMode: 'crop-and-scale',
   };
 
   const attemptScan = async () => {
