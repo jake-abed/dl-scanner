@@ -4,8 +4,7 @@ import { CameraProps } from '../utils/types';
 import { decodeBarcode } from '../utils/barcodes';
 
 function Camera(props: CameraProps) {
-  const [pic, setPic] = useState<string | undefined | null>(null);
-  const { status, setStatus } = props;
+  const { scanStatus, setScanStatus } = props;
   const camRef = useRef<Webcam>(null);
   const usingMobile = navigator.platform === 'iPhone' || navigator.platform === 'Android';
   const aspectRatio = usingMobile ? 3 / 10 : 10 / 3;
@@ -22,32 +21,32 @@ function Camera(props: CameraProps) {
 
   const attemptScan = async () => {
     const shot = camRef?.current?.getScreenshot({ width: 1800, height: 400 });
-    const newAttempts = status.attempts + 1;
+    const newAttempts = scanStatus.attempts + 1;
     const img = new Image();
     img.src = shot as string;
     const decoded = await decodeBarcode(img);
     console.log(decoded);
     if (decoded.error && newAttempts === 3) {
-      setStatus({ ...status, attempts: newAttempts });
+      setScanStatus({ ...scanStatus, attempts: newAttempts });
       return;
     }
     if (decoded.error && newAttempts === 5) {
-      setStatus({ ...status, attempts: newAttempts, failure: true });
+      setScanStatus({ ...scanStatus, attempts: newAttempts, failure: true });
       return;
     }
     if (decoded.error) {
-      setStatus({ ...status, attempts: newAttempts });
+      setScanStatus({ ...scanStatus, attempts: newAttempts });
       return;
     }
     if (decoded.result) {
-      setStatus({ ...status, attempts: newAttempts, success: true });
+      setScanStatus({ ...scanStatus, attempts: newAttempts, success: true, scanResults: decoded.result });
       return;
     }
   };
 
   return (
-    <>
-      <div className="flex p-2 md:p-8">
+    <div className="bg-zinc-900 p-4 md:p-8 gap-4 flex flex-col align-center rounded-xl">
+      <div className="flex">
         <Webcam
           className="mx-auto"
           audio={false}
@@ -57,19 +56,21 @@ function Camera(props: CameraProps) {
           ref={camRef}
         />
       </div>
-      <button className="bg-green-100 text-3xl" onClick={attemptScan}>
+      <button className="bg-zinc-700 p-2 rounded-xl text-3xl" onClick={attemptScan}>
         Take Pic
       </button>
-      {status.attempts === 3 && (
-        <p>
-          Hey, looks like you're having a hard time scanning your barcode. If you're on a desktop, you may wish to try
-          using a mobile phone instead.
-          <br />
-          <br />
-          Please try two more times and if you're still having trouble, we'll let you manually enter your information.
+      {(scanStatus.attempts === 3 || scanStatus.attempts === 4) && (
+        <p className="text-lg py-2">
+          Having a hard time scanning your barcode?
+          <ul className="list-disc px-6 py-2 text-md font-normal">
+            <li>If you're on a desktop, you may wish to try using a mobile phone instead.</li>
+            <li>Make sure you're in a well-lit room.</li>
+          </ul>
+          After five failed attempts, we'll have you manually enter your information.
         </p>
       )}
-    </>
+      {scanStatus.scanResults ? <p>{JSON.stringify(scanStatus.scanResults)}</p> : <></>}
+    </div>
   );
 }
 

@@ -1,4 +1,5 @@
 import { BrowserPDF417Reader } from '@zxing/browser';
+const { parse } = require('driver-license-parser');
 
 async function decodeBarcode(img: HTMLImageElement) {
   const hints = new Map();
@@ -7,7 +8,7 @@ async function decodeBarcode(img: HTMLImageElement) {
   let result: string | null = null;
   try {
     const res = await reader.decodeFromImageElement(img);
-    return { result: res.getText() };
+    return { result: parse(res.getText()) };
   } catch (e: unknown) {
     if (e instanceof Error) {
       return { error: e.name };

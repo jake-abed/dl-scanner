@@ -1,9 +1,10 @@
 import { WebcamProps } from 'react-webcam';
 
-interface Status {
+interface ScanStatus {
   attempts: number;
   success: boolean;
   failure: boolean;
+  scanResults?: ScanResults;
 }
 
 interface ScanResults {
@@ -15,8 +16,8 @@ interface ScanResults {
 }
 
 interface CameraProps {
-  status: Status;
-  setStatus: (status: Status) => void;
+  scanStatus: ScanStatus;
+  setScanStatus: (scanStatus: ScanStatus) => void;
 }
 
-export type { Status, ScanResults, CameraProps };
+export type { ScanStatus, ScanResults, CameraProps };
