@@ -30,7 +30,7 @@ function parseLine(line: string) {
 function parseResult(result: string) {
   const lines = result.split('\n');
   const parsed = lines.map((line) => parseLine(line)).filter((line) => line !== '') as [string, string][];
-  console.log(Object.fromEntries(parsed));
+  return Object.fromEntries(parsed);
 }
 
 async function decodeBarcode(img: HTMLImageElement) {
