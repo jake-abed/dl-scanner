@@ -9,7 +9,7 @@ function Camera(props: CameraProps) {
   const camRef = useRef<Webcam>(null);
 
   const videoConstraints = {
-    aspectRatio: 10 / 3,
+    aspectRatio: 4 / 3,
     resizeMode: 'crop-and-scale',
     facingMode: 'environment',
   };
@@ -23,9 +23,6 @@ function Camera(props: CameraProps) {
     console.log(decoded);
     if (decoded.error && newAttempts === 3) {
       setStatus({ ...status, attempts: newAttempts });
-      alert(
-        "Hey, looks like you're having a hard time scanning your barcode. If you're on a desktop, you may wish to try using a mobile phone instead. \n\nPlease try two more times and if you're still having trouble, we'll let you manually enter your information.",
-      );
       return;
     }
     if (decoded.error && newAttempts === 5) {
@@ -57,6 +54,16 @@ function Camera(props: CameraProps) {
       <button className="bg-green-100 text-3xl" onClick={attemptScan}>
         Take Pic
       </button>
+      {status.attempts === 3 && (
+        <p>
+          Hey, looks like you're having a hard time scanning your barcode. If you're on a desktop, you may wish to try
+          using a mobile phone instead.
+          <br />
+          <br />
+          Please try two more times and if you're still having trouble, we'll let you manually enter your information.
+        </p>
+      )}
+      <p>{navigator.platform}</p>
     </>
   );
 }
