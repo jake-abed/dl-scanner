@@ -4,6 +4,7 @@ import { CameraProps, ScanResults } from '../utils/types';
 import { decodeBarcode } from '../utils/barcodes';
 
 function Camera(props: CameraProps) {
+    // This should probably be integrated into props - vestigial from early testing.
     const MAX_ATTEMPTS = 6;
     const { scanStatus, setScanStatus } = props;
     const camRef = useRef<Webcam>(null);
@@ -23,8 +24,10 @@ function Camera(props: CameraProps) {
     };
 
     const attemptScan = async () => {
+        // Grab the screenshot as base64 encoded string.
         const shot = camRef?.current?.getScreenshot({ width: 1800, height: 400 });
         const newAttempts = scanStatus.attempts + 1;
+        // Create an image element and set the src to the base64 string before passing it to the decoder.
         const img = new Image();
         img.src = shot as string;
         const decoded = await decodeBarcode(img);

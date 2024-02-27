@@ -4,11 +4,6 @@ import { BrowserPDF417Reader } from '@zxing/browser';
 This is a fantastic candidate for a new OSS library on NPM or JSR. There's a library out there that claims to do this, but it's just an expirement and did not seem super great to be honest.
 */
 
-/* Test DL # - Don't Dox Me Please
-const testResult =
-  '@\n\u001e\rANSI 636014090102DL00410287ZC03280024DLDAQE3002456\nDCSABED\nDDEN\nDACTHOMAS\nDDFN\nDADJAKE\nDDGN\nDCAC\nDCBNONE\nDCDNONE\nDBD04252022\nDBB10201990\nDBA10202026\nDBC1\nDAU073 IN\nDAYHAZ\nDAG5310 SAN FRANCISCO BLVD\nDAISACRAMENTO\nDAJCA\nDAK958200000 \nDCF04/25/202250148/CCFD/26\nDCGUSA\nDAW195\nDAZBRO\nDCK22115E30024560401\nDDAF\nDDB08292017\nDDK1\rZCZCAHZL\nZCBBRN\nZCC\nZCD\r';
-*/
-
 // Parse each line into a key-value pair.
 function parseLine(line: string) {
     if (line.includes('ANSI')) {
