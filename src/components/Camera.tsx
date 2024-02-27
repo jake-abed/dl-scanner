@@ -4,8 +4,11 @@ import { CameraProps, ScanResults } from '../utils/types';
 import { decodeBarcode } from '../utils/barcodes';
 
 function Camera(props: CameraProps) {
+    const MAX_ATTEMPTS = 6;
     const { scanStatus, setScanStatus } = props;
     const camRef = useRef<Webcam>(null);
+
+    // Video constraints may need to be adjusted for mobile devices
     const usingMobile = navigator.platform === 'iPhone' || navigator.platform === 'Android';
     const aspectRatio = usingMobile ? 3 / 10 : 10 / 3;
     const width = usingMobile ? 600 : 2000;
@@ -25,11 +28,7 @@ function Camera(props: CameraProps) {
         const img = new Image();
         img.src = shot as string;
         const decoded = await decodeBarcode(img);
-        if (decoded.error && newAttempts === 3) {
-            setScanStatus({ ...scanStatus, attempts: newAttempts });
-            return;
-        }
-        if (decoded.error && newAttempts === 5) {
+        if (decoded.error && newAttempts === MAX_ATTEMPTS) {
             setScanStatus({ ...scanStatus, attempts: newAttempts, failure: true });
             return;
         }
@@ -57,14 +56,15 @@ function Camera(props: CameraProps) {
             <button className="bg-zinc-700 p-2 rounded-xl text-3xl" onClick={attemptScan}>
                 Take Pic
             </button>
-            {(scanStatus.attempts === 3 || scanStatus.attempts === 4) && (
+            {scanStatus.attempts >= MAX_ATTEMPTS / 2 && scanStatus.attempts < MAX_ATTEMPTS && (
                 <div className="text-lg py-2">
                     Having a hard time scanning your barcode?
                     <ul className="list-disc px-6 py-2 text-md font-normal">
                         <li>If you&apos;re on a desktop, you may wish to try using a mobile phone instead.</li>
                         <li>Make sure you&apos;re in a well-lit room.</li>
                     </ul>
-                    After five failed attempts, we&apos;ll have you manually enter your information.
+                    After {MAX_ATTEMPTS - scanStatus.attempts} more attempts, we&apos;ll have you manually enter your
+                    information.
                 </div>
             )}
         </div>

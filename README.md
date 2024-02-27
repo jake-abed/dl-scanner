@@ -5,7 +5,7 @@ This web app allows a user to quickly scan the barcode on the back of their US d
 ## To-Do
 
 -   Polish UI/UX
--   Build out tests.
+-   Install jsdom & build out tests.
 
 ## Technologies
 

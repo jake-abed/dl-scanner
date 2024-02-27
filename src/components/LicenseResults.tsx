@@ -1,6 +1,7 @@
 import { ScanResults } from '../utils/types';
 
 export default function LicenseResults(props: ScanResults) {
+    // If props are not provided, default to empty strings.
     const firstName = props.firstName || '';
     const middleName = props.middleName || '';
     const lastName = props.lastName || '';
@@ -9,6 +10,7 @@ export default function LicenseResults(props: ScanResults) {
     const issuanceDate = props.issuanceDate || '';
     const expiryDate = props.expiryDate || '';
 
+    // Potential To-Do: Further break into components for reusability and readability.
     return (
         <>
             {props.scanFailed ? (
