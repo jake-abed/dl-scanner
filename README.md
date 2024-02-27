@@ -28,6 +28,9 @@ I hunted down a nice community Vite template that was a good starting place for 
 -   **ZXing:** While the JS port is a little less documented, it is super well-tolerated and maintained. Barcode scanning is typically more reliable than OCR.
 -   **react-webcam:** This was a harder choice, but react-webcam abstracts away some of the finicky parts of media streams, handles some compatibility, and is generally easy to use. That being said, it still allows a fair degree of access to the media constraints when spinning up a media stream. As far as I know, it is a little better maintained than react-camera-pro, but that's just anecdotal/observation.
 
+### Hosting
+To keep things simple, I just chose Vercel to host the [the live app](https://dl-scanner.vercel.app/). Fast and effective made sense for this type of project, but for a full production app that would likely change.
+
 ## Architecture
 
 I could see myself changing some of the details based on implementation, but the skeleton is good. One component of that is not knowing how the information is going to be used/passed along. I'll break my decision making process down for now though.
@@ -64,4 +67,4 @@ Thank you so much for the opportunity to do this challenge: even if you do not w
 
 ## License
 
-The project was scaffolded from the open source Vite template under the terms of the [MIT License](LICENSE).
+The project was scaffolded from the open source Vite template under the terms of the [MIT License](LICENSE). As such, I've left the original license in the project.
