@@ -63,7 +63,7 @@ First and foremost, the app has a hard time scanning the barcode on laptops with
 
 ## Wrap-up
 
-Thank you so much for the opportunity to do this challenge: even if you do not wish to proceed further with the interview process, it was a fun and interesting opportunity for me. If you want to chat more, I look forward. If not, zero worries whatsoever. Good luck finding on your search 🙂
+Thank you so much for the opportunity to do this challenge: even if you do not wish to proceed further with the interview process, it was a fun and interesting opportunity for me. If you want to chat more, I look forward. If not, zero worries whatsoever. Good luck on your search 🙂
 
 ## License
 
